@@ -32,7 +32,8 @@ public class RemoteToLocal {
                             e.getId(),
                             e.getRawName(),
                             e.getName(),
-                            e.getThumbnail()
+                            e.getThumbnail(),
+                            e.getMusclesInvolved()
                     )
             );
         }
@@ -58,21 +59,5 @@ public class RemoteToLocal {
         }
 
         return workouts;
-    }
-
-    public static List<Format> formatConvertor(List<FormatResponse> formatResponses) {
-        List<Format> formats = new ArrayList<>();
-
-        for (FormatResponse t : formatResponses) {
-            Log.e(TAG, t.getSource());
-
-            formats.add(
-                    new Format(t.getId(),
-                            t.getSource()
-                    )
-            );
-        }
-
-        return formats;
     }
 }

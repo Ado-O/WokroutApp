@@ -3,7 +3,6 @@ package com.tech387.wokroutapp.data.storage;
 import android.util.Log;
 
 import com.tech387.wokroutapp.data.storage.local.exercise.ExerciseLocalDataSource;
-import com.tech387.wokroutapp.data.storage.local.format.FormatLocalDataSource;
 import com.tech387.wokroutapp.data.storage.local.workout.WorkoutLocalDataSource;
 import com.tech387.wokroutapp.data.storage.remote.content.ContentRemoteDataSource;
 import com.tech387.wokroutapp.data.storage.remote.response.BaseResponse;
@@ -20,34 +19,29 @@ public class ContentRepository {
     private final ContentRemoteDataSource mContentRemoteDataSource;
     private final ExerciseLocalDataSource mExerciseLocalDataSource;
     private final WorkoutLocalDataSource mWorkoutLocalDataSource;
-    private final FormatLocalDataSource mFormatLocalDataSource;
 
     public ContentRepository(
             AppExecutors appExecutors,
             ContentRemoteDataSource contentRemoteDataSource,
             ExerciseLocalDataSource exerciseLocalDataSource,
-            WorkoutLocalDataSource workoutLocalDataSource,
-            FormatLocalDataSource formatLocalDataSource) {
+            WorkoutLocalDataSource workoutLocalDataSource) {
         mContentRemoteDataSource = contentRemoteDataSource;
         mExerciseLocalDataSource = exerciseLocalDataSource;
         mAppExecutors = appExecutors;
         mWorkoutLocalDataSource = workoutLocalDataSource;
-        mFormatLocalDataSource = formatLocalDataSource;
     }
 
     public static ContentRepository getsInstance(
             AppExecutors appExecutors,
             ContentRemoteDataSource contentRemoteDataSource,
             ExerciseLocalDataSource exerciseLocalDataSource,
-            WorkoutLocalDataSource workoutLocalDataSource,
-            FormatLocalDataSource formatLocalDataSource) {
+            WorkoutLocalDataSource workoutLocalDataSource) {
         if (sInstance == null)
             sInstance = new ContentRepository(
                     appExecutors,
                     contentRemoteDataSource,
                     exerciseLocalDataSource,
-                    workoutLocalDataSource,
-                    formatLocalDataSource);
+                    workoutLocalDataSource);
 
         return sInstance;
     }
@@ -66,8 +60,6 @@ public class ContentRepository {
                         mWorkoutLocalDataSource.insertWorkouts
                                 (content.getResponseResponse().getWorkouts());
 
-                        mFormatLocalDataSource.insert
-                                (content.getResponseResponse().getmFormat());
 
 
 

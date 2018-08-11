@@ -20,11 +20,15 @@ public class Exercise {
     @ColumnInfo(name = "image")
     private String mImg;
 
-    public Exercise(long id, String rawName, String title, String img) {
+    @ColumnInfo(name = "muscles_involved")
+    private String mMuscle;
+
+    public Exercise(long id, String rawName, String title, String img, String muscle) {
         mId = id;
         mRawName = rawName;
         mTitle = title;
         mImg = img;
+        mMuscle = muscle;
     }
 
     public long getId() {
@@ -57,5 +61,9 @@ public class Exercise {
 
     public void setRawName(String rawName) {
         mRawName = rawName;
+    }
+
+    public String getMuscle() {
+        return mMuscle;
     }
 }

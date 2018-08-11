@@ -4,11 +4,9 @@ import android.content.Context;
 
 import com.tech387.wokroutapp.data.storage.ContentRepository;
 import com.tech387.wokroutapp.data.storage.ExerciseRepository;
-import com.tech387.wokroutapp.data.storage.FormatRespository;
 import com.tech387.wokroutapp.data.storage.WorkoutRepository;
 import com.tech387.wokroutapp.data.storage.local.AppDatabase;
 import com.tech387.wokroutapp.data.storage.local.exercise.ExerciseLocalDataSource;
-import com.tech387.wokroutapp.data.storage.local.format.FormatLocalDataSource;
 import com.tech387.wokroutapp.data.storage.local.workout.WorkoutLocalDataSource;
 import com.tech387.wokroutapp.data.storage.remote.content.ContentRemoteDataSource;
 import com.tech387.wokroutapp.util.AppExecutors;
@@ -40,21 +38,12 @@ public class Injection {
                 provideAppExecutors()
         );
     }
-
-    public static FormatLocalDataSource provideFormatLocalDataSource(Context context){
-        return FormatLocalDataSource.getInstance(
-                provideAppDatabase(context.getApplicationContext()).getFormatDao(),
-                provideAppExecutors()
-        );
-    }
-
     public static ContentRepository provideContentRepository(Context context) {
         return ContentRepository.getsInstance(
                 provideAppExecutors(),
                 provideContentRemoteDataSource(),
                 provideExerciseLocalDataSource(context.getApplicationContext()),
-                provideWorkoutLocalDataSource(context.getApplicationContext()),
-                provideFormatLocalDataSource(context.getApplicationContext())
+                provideWorkoutLocalDataSource(context.getApplicationContext())
         );
     }
 
@@ -67,12 +56,6 @@ public class Injection {
     public static WorkoutRepository provideWorkoutRepository(Context context){
         return WorkoutRepository.getInstance(
                 provideWorkoutLocalDataSource(context.getApplicationContext())
-        );
-    }
-
-    public static FormatRespository provideFormatRepository(Context context){
-        return FormatRespository.getInstance(
-                provideFormatLocalDataSource(context.getApplicationContext())
         );
     }
 

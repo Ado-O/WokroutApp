@@ -74,7 +74,8 @@ public class ExerciseFragment extends Fragment implements RecyclerViewClickListe
     @Override
     public void recyclerViewListClicked(View v, Exercise exercise) {
         Intent intent = new Intent(mContext, Main2Activity.class);
-        intent.putExtra("course", exercise.getId());
+        intent.putExtra("course", exercise.getMuscle());
+        intent.putExtra("courseTitle", exercise.getTitle());
         mContext.startActivity(intent);
     }
 

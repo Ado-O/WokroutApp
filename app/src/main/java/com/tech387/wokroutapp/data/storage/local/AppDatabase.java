@@ -6,14 +6,12 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
 import com.tech387.wokroutapp.data.Exercise;
-import com.tech387.wokroutapp.data.Format;
 import com.tech387.wokroutapp.data.Workout;
 import com.tech387.wokroutapp.data.storage.local.exercise.ExerciseDao;
-import com.tech387.wokroutapp.data.storage.local.format.FormatDao;
 import com.tech387.wokroutapp.data.storage.local.workout.WorkoutDao;
 
 @Database(entities = {
-        Exercise.class, Workout.class, Format.class
+        Exercise.class, Workout.class
 }, version = 6, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -21,7 +19,6 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract ExerciseDao getExerciseDao();
     public abstract WorkoutDao getWorkoutDao();
-    public abstract FormatDao getFormatDao();
 
     public static final Object sLock = new Object();
 

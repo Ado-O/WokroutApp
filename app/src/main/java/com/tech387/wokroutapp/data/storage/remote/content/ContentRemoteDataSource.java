@@ -1,9 +1,14 @@
 package com.tech387.wokroutapp.data.storage.remote.content;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.tech387.wokroutapp.data.storage.remote.ServiceGenerator;
 import com.tech387.wokroutapp.data.storage.remote.response.BaseResponse;
+import com.tech387.wokroutapp.main.Main2Activity;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,7 +21,6 @@ public class ContentRemoteDataSource {
     private static ContentRemoteDataSource sInstance;
 
     private ContentRemoteDataSource() {
-
     }
 
     public static ContentRemoteDataSource getInstance() {
@@ -28,6 +32,7 @@ public class ContentRemoteDataSource {
 
     /**
      * Getting the content from the content url
+     *
      * @param callback
      */
     public void getContent(final GetContentCallback callback) {
@@ -39,7 +44,7 @@ public class ContentRemoteDataSource {
                     @Override
                     public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                         if (response.isSuccessful()) {
-                            Log.e(TAG, String.valueOf(response.body().getResponseResponse().getExercise().size()));
+
                             callback.onSuccess(response.body());
                         } else {
                             callback.onError();
