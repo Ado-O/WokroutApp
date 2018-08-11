@@ -10,83 +10,102 @@ public class ExerciseResponse implements Serializable{
 
     @SerializedName("id")
     @Expose
-    private Long mId;
-
+    private long id;
     @SerializedName("name")
     @Expose
-    private String mName;
-
+    private String name;
     @SerializedName("raw_name")
     @Expose
-    private String mRawName;
-
+    private String rawName;
     @SerializedName("hardness")
     @Expose
-    private String mHardness;
-
+    private String hardness;
     @SerializedName("thumbnail")
     @Expose
-    private String mThumbnail;
-
+    private String thumbnail;
+    @SerializedName("formats")
+    @Expose
+    private List<FormatResponse> formats = null;
     @SerializedName("muscles_involved")
     @Expose
-    private String mMusclesInvolved;
-
+    private String musclesInvolved;
+    @SerializedName("version")
+    @Expose
+    private String version;
     @SerializedName("tags")
     @Expose
-    private List<Long> tags;
+    private List<String> tags = null;
 
     public long getId() {
-        return mId;
+        return id;
     }
 
     public void setId(long id) {
-        mId = id;
+        this.id = id;
     }
 
     public String getName() {
-        return mName;
+        return name;
     }
 
     public void setName(String name) {
-        mName = name;
+        this.name = name;
     }
 
     public String getRawName() {
-        return mRawName;
+        return rawName;
     }
 
     public void setRawName(String rawName) {
-        mRawName = rawName;
+        this.rawName = rawName;
     }
 
     public String getHardness() {
-        return mHardness;
+        return hardness;
     }
 
     public void setHardness(String hardness) {
-        mHardness = hardness;
+        this.hardness = hardness;
     }
 
     public String getThumbnail() {
-        return mThumbnail;
+        return thumbnail;
     }
 
     public void setThumbnail(String thumbnail) {
-        mThumbnail = thumbnail;
+        this.thumbnail = thumbnail;
+    }
+
+    public List<FormatResponse> getFormats() {
+        return formats;
+    }
+
+    public void setFormats(List<FormatResponse> formats) {
+        this.formats = formats;
     }
 
     public String getMusclesInvolved() {
-        return mMusclesInvolved;
+        return musclesInvolved;
     }
 
     public void setMusclesInvolved(String musclesInvolved) {
-        mMusclesInvolved = musclesInvolved;
+        this.musclesInvolved = musclesInvolved;
     }
 
-    public List<Long>
-    getTags() {
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public List<String> getTags() {
         return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 
 }
