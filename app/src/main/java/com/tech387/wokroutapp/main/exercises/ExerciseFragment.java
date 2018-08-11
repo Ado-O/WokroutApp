@@ -1,6 +1,7 @@
 package com.tech387.wokroutapp.main.exercises;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,10 +18,12 @@ import com.tech387.wokroutapp.data.Exercise;
 import com.tech387.wokroutapp.data.storage.ContentRepository;
 import com.tech387.wokroutapp.data.storage.ExerciseRepository;
 import com.tech387.wokroutapp.main.other.FourFragment;
+import com.tech387.wokroutapp.main.wokrouts.Main2Activity;
+import com.tech387.wokroutapp.util.RecyclerViewClickListener;
 
 import java.util.List;
 
-public class ExerciseFragment extends Fragment {
+public class ExerciseFragment extends Fragment implements RecyclerViewClickListener{
 
     Context mContext;
     private RecyclerView mRecyclerView;
@@ -56,7 +59,7 @@ public class ExerciseFragment extends Fragment {
             @Override
             public void onSuccess(List<Exercise> exercises) {
 
-                mRecycleViewAdapter = new RecycleViewAdapterOne(mContext, exercises);
+               mRecycleViewAdapter = new RecycleViewAdapterOne(mContext, exercises, ExerciseFragment.this);
                 mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
                 mRecyclerView.setAdapter(mRecycleViewAdapter);
             }
@@ -67,6 +70,13 @@ public class ExerciseFragment extends Fragment {
             }
         });
 
-
     }
+
+    @Override
+    public void recyclerViewListClicked(View v, Exercise exercise) {
+        Intent intent = new Intent(mContext, Main2Activity.class);
+        intent.putExtra("course", exercise.getId());
+        mContext.startActivity(intent);
+    }
+
 }

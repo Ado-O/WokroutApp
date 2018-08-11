@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View.OnClickListener" />
+
+        <variable
+            name="listener"
+            type="com.tech387.wokroutapp.util.RecyclerViewClickListener" />
         <variable
             name="exercise"
             type="com.tech387.wokroutapp.data.Exercise" />
@@ -15,6 +20,7 @@
         android:layout_margin="@dimen/margin"
         app:cardCornerRadius="@dimen/radiusCorner"
         app:cardElevation="@dimen/elevetion"
+        android:onClick="@{(view)-> listener.recyclerViewListClicked(view, exercise)}"
         >
 
         <android.support.constraint.ConstraintLayout

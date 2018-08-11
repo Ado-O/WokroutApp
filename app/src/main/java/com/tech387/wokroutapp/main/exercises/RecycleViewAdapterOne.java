@@ -8,18 +8,22 @@ import android.view.ViewGroup;
 
 import com.tech387.wokroutapp.data.Exercise;
 import com.tech387.wokroutapp.databinding.ListItemBinding;
+import com.tech387.wokroutapp.util.RecyclerViewClickListener;
 
 import java.util.List;
 
 public class RecycleViewAdapterOne extends RecyclerView.Adapter {
 
+
     private List<Exercise> mList;
     private LayoutInflater mInflater;
+    private RecyclerViewClickListener mListener;
     private Context mContext;
 
-    public RecycleViewAdapterOne(Context context, List<Exercise> list) {
+    public RecycleViewAdapterOne(Context context, List<Exercise> list, RecyclerViewClickListener listener) {
         mInflater = LayoutInflater.from(context);
         mList = list;
+        mListener = listener;
 
         mContext = context;
 
@@ -28,7 +32,7 @@ public class RecycleViewAdapterOne extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ExerciseViewHolder(ListItemBinding.inflate(mInflater, parent, false));
+        return new ExerciseViewHolder(ListItemBinding.inflate(mInflater, parent, false), mListener);
     }
 
     @Override
