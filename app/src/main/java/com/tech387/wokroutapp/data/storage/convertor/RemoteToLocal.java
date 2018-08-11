@@ -1,13 +1,8 @@
 package com.tech387.wokroutapp.data.storage.convertor;
 
-import android.util.Log;
-
 import com.tech387.wokroutapp.data.Exercise;
-import com.tech387.wokroutapp.data.ExerciseTag;
-import com.tech387.wokroutapp.data.Tag;
 import com.tech387.wokroutapp.data.Workout;
 import com.tech387.wokroutapp.data.storage.remote.response.ExerciseResponse;
-import com.tech387.wokroutapp.data.storage.remote.response.TagResponse;
 import com.tech387.wokroutapp.data.storage.remote.response.WorkoutResponse;
 
 import java.util.ArrayList;
@@ -60,50 +55,4 @@ public class RemoteToLocal {
 
         return workouts;
     }
-
-    /**
-     * we redict response from networking (tags)
-     *
-     * @param tagResponses -> object wich we get tags
-     * @return
-     */
-    public static List<Tag> tagConvertor(List<TagResponse> tagResponses) {
-        List<Tag> tags = new ArrayList<>();
-
-        for (TagResponse t : tagResponses) {
-            tags.add(
-                    new Tag(
-                            t.getmId(),
-                            t.getmName()
-                    )
-            );
-        }
-        return tags;
-    }
-
-    /**
-     * attempt to create exerciseTagConverter
-     *
-     * @param exerciseResponses
-     * @return
-     */
-    public static List<ExerciseTag> exerciseTagConverter(
-            List<ExerciseResponse> exerciseResponses
-    ) {
-
-        List<ExerciseTag> exerciseTag = new ArrayList<>();
-
-        for (ExerciseResponse e : exerciseResponses) {
-            Log.e(TAG, String.valueOf(e.getTags()));
-            exerciseTag.add(
-                    new ExerciseTag(
-                            e.getId(),
-                            e.getTags()
-                    )
-            );
-
-        }
-        return exerciseTag;
-    }
-
 }

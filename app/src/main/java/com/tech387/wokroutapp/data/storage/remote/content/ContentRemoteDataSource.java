@@ -11,6 +11,8 @@ import retrofit2.Response;
 
 public class ContentRemoteDataSource {
 
+    private static final String TAG = ContentRemoteDataSource.class.getSimpleName();
+
     private static ContentRemoteDataSource sInstance;
 
     private ContentRemoteDataSource() {
@@ -37,6 +39,7 @@ public class ContentRemoteDataSource {
                     @Override
                     public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                         if (response.isSuccessful()) {
+                            Log.e(TAG, String.valueOf(response.body().getResponseResponse().getExercise().size()));
                             callback.onSuccess(response.body());
                         } else {
                             callback.onError();

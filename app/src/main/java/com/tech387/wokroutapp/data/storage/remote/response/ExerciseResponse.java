@@ -34,7 +34,7 @@ public class ExerciseResponse implements Serializable{
 
     @SerializedName("tags")
     @Expose
-    private Long tags;
+    private List<Long> tags;
 
     public long getId() {
         return mId;
@@ -84,7 +84,8 @@ public class ExerciseResponse implements Serializable{
         mMusclesInvolved = musclesInvolved;
     }
 
-    public Long getTags() {
+    public List<Long>
+    getTags() {
         return tags;
     }
 

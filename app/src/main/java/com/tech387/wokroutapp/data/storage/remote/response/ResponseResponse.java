@@ -16,10 +16,6 @@ public class ResponseResponse implements Serializable {
     @Expose
     private List<WorkoutResponse> mWorkouts;
 
-    @SerializedName("tags")
-    @Expose
-    private List<TagResponse> mTags;
-
     public List<ExerciseResponse> getExercise() {
         return mExercise;
     }
@@ -36,11 +32,4 @@ public class ResponseResponse implements Serializable {
         mWorkouts = workouts;
     }
 
-    public List<TagResponse> getmTags() {
-        return mTags;
-    }
-
-    public void setmTags(List<TagResponse> mTags) {
-        this.mTags = mTags;
-    }
 }

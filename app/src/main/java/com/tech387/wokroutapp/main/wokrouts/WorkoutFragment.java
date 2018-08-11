@@ -21,6 +21,7 @@ import com.tech387.wokroutapp.data.storage.WorkoutRepository;
 import java.util.List;
 
 public class WorkoutFragment extends Fragment {
+
     Context mContext;
     private RecyclerView mRecyclerView;
     private RecycleViewAdapterTwo mRecycleViewAdapterTwo;

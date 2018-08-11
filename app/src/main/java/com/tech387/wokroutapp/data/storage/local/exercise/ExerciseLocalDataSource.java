@@ -3,7 +3,6 @@ package com.tech387.wokroutapp.data.storage.local.exercise;
 import android.util.Log;
 
 import com.tech387.wokroutapp.data.Exercise;
-import com.tech387.wokroutapp.data.ExerciseTag;
 import com.tech387.wokroutapp.data.storage.convertor.RemoteToLocal;
 import com.tech387.wokroutapp.data.storage.remote.response.ExerciseResponse;
 import com.tech387.wokroutapp.util.AppExecutors;
@@ -35,16 +34,8 @@ public class ExerciseLocalDataSource {
      * insert and get data from db
      */
     public void insertExercise(List<ExerciseResponse> exerciseResponses) {
-
-
-
         mExerciseDao.insert(RemoteToLocal.exerciseConverter(exerciseResponses));
-
-
-        /*
-        we missing getExerciseTags, clearTags
-         */
-      mExerciseDao.insertExerciseTags(RemoteToLocal.exerciseTagConverter(exerciseResponses));
+        Log.e(TAG, String.valueOf(exerciseResponses.get(0).getName()));
 
     }
 
