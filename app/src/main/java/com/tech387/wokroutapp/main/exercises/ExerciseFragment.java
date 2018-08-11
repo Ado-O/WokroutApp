@@ -17,8 +17,7 @@ import com.tech387.wokroutapp.R;
 import com.tech387.wokroutapp.data.Exercise;
 import com.tech387.wokroutapp.data.storage.ContentRepository;
 import com.tech387.wokroutapp.data.storage.ExerciseRepository;
-import com.tech387.wokroutapp.main.other.FourFragment;
-import com.tech387.wokroutapp.main.wokrouts.Main2Activity;
+import com.tech387.wokroutapp.main.Main2Activity;
 import com.tech387.wokroutapp.util.RecyclerViewClickListener;
 
 import java.util.List;

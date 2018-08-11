@@ -1,8 +1,12 @@
 package com.tech387.wokroutapp.data.storage.convertor;
 
+import android.util.Log;
+
 import com.tech387.wokroutapp.data.Exercise;
+import com.tech387.wokroutapp.data.Format;
 import com.tech387.wokroutapp.data.Workout;
 import com.tech387.wokroutapp.data.storage.remote.response.ExerciseResponse;
+import com.tech387.wokroutapp.data.storage.remote.response.FormatResponse;
 import com.tech387.wokroutapp.data.storage.remote.response.WorkoutResponse;
 
 import java.util.ArrayList;
@@ -54,5 +58,21 @@ public class RemoteToLocal {
         }
 
         return workouts;
+    }
+
+    public static List<Format> formatConvertor(List<FormatResponse> formatResponses) {
+        List<Format> formats = new ArrayList<>();
+
+        for (FormatResponse t : formatResponses) {
+            Log.e(TAG, t.getSource());
+
+            formats.add(
+                    new Format(t.getId(),
+                            t.getSource()
+                    )
+            );
+        }
+
+        return formats;
     }
 }
