@@ -23,6 +23,9 @@ public class Exercise {
     @ColumnInfo(name = "image")
     private String mImage;
 
+    @ColumnInfo(name = "video")
+    private String mVideo;
+
     @ColumnInfo(name = "muscles_involved")
     private String mMuscle;
 
@@ -31,11 +34,12 @@ public class Exercise {
     @Ignore
     private List<Tag> mTags;
 
-    public Exercise(long id, String rawName, String title, String image, String muscle) {
+    public Exercise(long id, String rawName, String title, String image, String video, String muscle) {
         mId = id;
         mRawName = rawName;
         mTitle = title;
         mImage = image;
+        mVideo = video;
         mMuscle = muscle;
     }
 
@@ -49,6 +53,14 @@ public class Exercise {
 
     public String getTitle() {
         return mTitle;
+    }
+
+    public String getVideo() {
+        return mVideo;
+    }
+
+    public void setVideo(String video) {
+        mVideo = video;
     }
 
     public String getMuscle() {

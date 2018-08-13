@@ -28,6 +28,10 @@ public class ExerciseResponse implements Serializable{
     @Expose
     private String thumbnail;
 
+    @SerializedName("formats")
+    @Expose
+    private List<FormatResponse> formats = null;
+
     @SerializedName("muscles_involved")
     @Expose
     private String musclesInvolved;
@@ -79,6 +83,14 @@ public class ExerciseResponse implements Serializable{
 
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public List<FormatResponse> getFormats() {
+        return formats;
+    }
+
+    public void setFormats(List<FormatResponse> formats) {
+        this.formats = formats;
     }
 
     public String getMusclesInvolved() {

@@ -7,6 +7,7 @@ import com.tech387.wokroutapp.data.ExerciseTag;
 import com.tech387.wokroutapp.data.Tag;
 import com.tech387.wokroutapp.data.Workout;
 import com.tech387.wokroutapp.data.storage.remote.response.ExerciseResponse;
+import com.tech387.wokroutapp.data.storage.remote.response.FormatResponse;
 import com.tech387.wokroutapp.data.storage.remote.response.TagResponse;
 import com.tech387.wokroutapp.data.storage.remote.response.WorkoutResponse;
 
@@ -28,12 +29,22 @@ public class RemoteToLocal {
 
         for (ExerciseResponse e : exerciseResponses) {
 
+            String videoUrl="";
+
+            for(FormatResponse f:e.getFormats()){
+                if(f.getType().equals("mp4")){
+                    videoUrl=f.getSource();
+                    break;
+                }
+            }
+
             exercises.add(
                     new Exercise(
                             e.getId(),
                             e.getRawName(),
                             e.getName(),
                             e.getThumbnail(),
+                            videoUrl,
                             e.getMusclesInvolved()
                     )
             );
