@@ -1,12 +1,9 @@
 package com.tech387.wokroutapp.data.storage.convertor;
 
-import android.util.Log;
-
 import com.tech387.wokroutapp.data.Exercise;
-import com.tech387.wokroutapp.data.Format;
+import com.tech387.wokroutapp.data.ExerciseTag;
 import com.tech387.wokroutapp.data.Workout;
 import com.tech387.wokroutapp.data.storage.remote.response.ExerciseResponse;
-import com.tech387.wokroutapp.data.storage.remote.response.FormatResponse;
 import com.tech387.wokroutapp.data.storage.remote.response.WorkoutResponse;
 
 import java.util.ArrayList;
@@ -33,6 +30,7 @@ public class RemoteToLocal {
                             e.getRawName(),
                             e.getName(),
                             e.getThumbnail(),
+                            e.getFormats().get(1).getSource(),
                             e.getMusclesInvolved()
                     )
             );
@@ -46,7 +44,7 @@ public class RemoteToLocal {
      * @param workoutResponses -> object wich we get workout
      * @return
      */
-    public static List<Workout> workoutConvertor(List<WorkoutResponse> workoutResponses) {
+    public static List<Workout> workoutConverter(List<WorkoutResponse> workoutResponses) {
         List<Workout> workouts = new ArrayList<>();
 
         for (WorkoutResponse w : workoutResponses) {
@@ -60,4 +58,15 @@ public class RemoteToLocal {
 
         return workouts;
     }
+
+    public static List<ExerciseTag> exerciseTagConverter(long exerciseId, List<Long> tags) {
+        List<ExerciseTag> exerciseTags = new ArrayList<>();
+
+        for (long tagId : tags) {
+            exerciseTags.add(new ExerciseTag(exerciseId, tagId));
+        }
+
+        return exerciseTags;
+    }
+
 }

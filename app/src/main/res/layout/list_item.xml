@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View.OnClickListener" />
+
+        <import type="android.view.View.OnClickListener"/>
 
         <variable
             name="listener"
-            type="com.tech387.wokroutapp.util.RecyclerViewClickListener" />
+            type="com.tech387.wokroutapp.util.RecyclerViewClickListener"/>
+
         <variable
             name="exercise"
-            type="com.tech387.wokroutapp.data.Exercise" />
+            type="com.tech387.wokroutapp.data.Exercise"/>
     </data>
 
     <android.support.design.card.MaterialCardView
@@ -18,9 +20,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
+        android:onClick="@{(view)-> listener.recyclerViewListClicked(view, exercise)}"
         app:cardCornerRadius="@dimen/radiusCorner"
         app:cardElevation="@dimen/elevetion"
-        android:onClick="@{(view)-> listener.recyclerViewListClicked(view, exercise)}"
         >
 
         <android.support.constraint.ConstraintLayout
@@ -31,10 +33,10 @@
                 android:id="@+id/iv_excersis"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:loadImage="@{exercise.img}"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImage="@{exercise.image}"/>
 
             <TextView
                 android:id="@+id/tv_title"
@@ -45,9 +47,9 @@
                 android:text="@{exercise.title}"
                 android:textSize="@dimen/textBig"
                 android:textStyle="bold"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_excersis" />
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_excersis"/>
 
             <TextView
                 android:id="@+id/tv_des"
@@ -55,11 +57,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:layout_marginLeft="6dp"
-                android:text="@{exercise.rawName}"
                 android:textSize="@dimen/textSmall"
+                app:exerciseTags="@{exercise.tags}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+                app:layout_constraintTop_toBottomOf="@id/tv_title"/>
 
         </android.support.constraint.ConstraintLayout>
 

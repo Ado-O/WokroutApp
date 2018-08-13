@@ -28,7 +28,7 @@ public class WorkoutLocalDataSource {
 
     public void insertWorkouts(List<WorkoutResponse> workoutResponses) {
         mWorkoutDao.insert(
-                RemoteToLocal.workoutConvertor(workoutResponses)
+                RemoteToLocal.workoutConverter(workoutResponses)
         );
     }
 

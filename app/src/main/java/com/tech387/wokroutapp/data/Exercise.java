@@ -2,32 +2,42 @@ package com.tech387.wokroutapp.data;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+
+import java.util.List;
 
 @Entity(tableName = "exercise_table")
 public class Exercise {
 
     @ColumnInfo(name = "_id")
-    @PrimaryKey(autoGenerate = true)
-    private long mId;
+    @PrimaryKey
+    private final long mId;
 
     @ColumnInfo(name = "raw_name")
-    private String mRawName;
+    private final String mRawName;
 
     @ColumnInfo(name = "title")
-    private String mTitle;
+    private final String mTitle;
 
     @ColumnInfo(name = "image")
-    private String mImg;
+    private final String mImage;
+
+    @ColumnInfo(name = "video")
+    private final String mVideo;
 
     @ColumnInfo(name = "muscles_involved")
-    private String mMuscle;
+    private final String mMuscle;
 
-    public Exercise(long id, String rawName, String title, String img, String muscle) {
+    @Ignore
+    private List<Tag> mTags;
+
+    public Exercise(long id, String rawName, String title, String image, String video, String muscle) {
         mId = id;
         mRawName = rawName;
         mTitle = title;
-        mImg = img;
+        mImage = image;
+        mVideo = video;
         mMuscle = muscle;
     }
 
@@ -35,35 +45,37 @@ public class Exercise {
         return mId;
     }
 
-    public void setId(long id) {
-        mId = id;
+    public String getRawName() {
+        return mRawName;
     }
 
-    public String getImg() {
-        return mImg;
-    }
-
-    public void setImg(String img) {
-        mImg = img;
-    }
 
     public String getTitle() {
         return mTitle;
     }
 
-    public void setTitle(String title) {
-        mTitle = title;
+
+
+
+    public String getVideo() {
+        return mVideo;
     }
 
-    public String getRawName() {
-        return mRawName;
-    }
-
-    public void setRawName(String rawName) {
-        mRawName = rawName;
-    }
 
     public String getMuscle() {
         return mMuscle;
+    }
+
+    public List<Tag> getTags() {
+        return mTags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        mTags = tags;
+    }
+
+
+    public String getImage() {
+        return mImage;
     }
 }

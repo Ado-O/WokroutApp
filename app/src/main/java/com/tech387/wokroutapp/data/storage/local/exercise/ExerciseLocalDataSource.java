@@ -35,8 +35,11 @@ public class ExerciseLocalDataSource {
      */
     public void insertExercise(List<ExerciseResponse> exerciseResponses) {
         mExerciseDao.insert(RemoteToLocal.exerciseConverter(exerciseResponses));
-        Log.e(TAG, String.valueOf(exerciseResponses.get(0).getName()));
 
+        for (ExerciseResponse e : exerciseResponses) {
+            mExerciseDao.clearTags(e.getId());
+            mExerciseDao.insertExerciseTags(RemoteToLocal.exerciseTagConverter(e.getId(), e.getTags()));
+        }
     }
 
     public void getExercises(final GetExerciseCallback callback) {
@@ -45,7 +48,9 @@ public class ExerciseLocalDataSource {
             public void run() {
                 final List<Exercise> exercises = mExerciseDao.getExercise();
 
-                Log.e(TAG, String.valueOf(exercises.size()));
+                for (Exercise e : exercises) {
+                    e.setTags(mExerciseDao.getExerciseTags(e.getId()));
+                }
 
                 mAppExecutors.mainThread().execute(new Runnable() {
                     @Override

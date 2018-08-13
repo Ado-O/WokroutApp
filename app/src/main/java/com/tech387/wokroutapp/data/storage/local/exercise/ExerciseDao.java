@@ -6,6 +6,8 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import com.tech387.wokroutapp.data.Exercise;
+import com.tech387.wokroutapp.data.ExerciseTag;
+import com.tech387.wokroutapp.data.Tag;
 
 import java.util.List;
 
@@ -28,6 +30,8 @@ public interface ExerciseDao {
      *
      * @param exerciseId -> paramet when we get id from exercise_table
      * @return
+     *
+     * */
     @Query("SELECT tag_table.* FROM tag_table INNER JOIN exercise_tag_table ON " +
             "tag_table._id= exercise_tag_table.tag_id WHERE exercise_tag_table.exercise_id = :exerciseId")
     List<Tag> getExerciseTags(long exerciseId);
@@ -37,12 +41,13 @@ public interface ExerciseDao {
      * eliminate the same
      * <p>
      * insertExerciseTags() function works: add excersie_id in ExerciseTag
+     */
     @Insert
     void insertExerciseTags(List<ExerciseTag> exerciseTags);
 
     //  call clearTags before insertExerciseTags
     @Query("DELETE FROM exercise_tag_table WHERE exercise_id=:exerciseId")
     void clearTags(long exerciseId);
-         */
+
 
 }

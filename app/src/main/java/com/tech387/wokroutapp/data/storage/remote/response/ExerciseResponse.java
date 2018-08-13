@@ -11,30 +11,38 @@ public class ExerciseResponse implements Serializable{
     @SerializedName("id")
     @Expose
     private long id;
+
     @SerializedName("name")
     @Expose
     private String name;
+
     @SerializedName("raw_name")
     @Expose
     private String rawName;
+
     @SerializedName("hardness")
     @Expose
     private String hardness;
+
     @SerializedName("thumbnail")
     @Expose
     private String thumbnail;
+
     @SerializedName("formats")
     @Expose
     private List<FormatResponse> formats = null;
+
     @SerializedName("muscles_involved")
     @Expose
     private String musclesInvolved;
+
     @SerializedName("version")
     @Expose
     private String version;
+
     @SerializedName("tags")
     @Expose
-    private List<String> tags = null;
+    private List<Long> tags = null;
 
     public long getId() {
         return id;
@@ -100,11 +108,11 @@ public class ExerciseResponse implements Serializable{
         this.version = version;
     }
 
-    public List<String> getTags() {
+    public List<Long> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(List<Long> tags) {
         this.tags = tags;
     }
 
