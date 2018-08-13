@@ -19,8 +19,6 @@ public class ExerciseBinding {
     public static void setText(TextView textView, List<Tag> tags) {
         //img
         String finalTags = "";
-        Log.e(TAG, String.valueOf(tags.get(0).getName()));
-
         for (int i = 0; i < tags.size(); i++) {
             finalTags += tags.get(i).getName();
 
@@ -31,6 +29,16 @@ public class ExerciseBinding {
         }
 
         textView.setText(finalTags);
+    }
+
+    //image
+    @SuppressWarnings("unchecked")
+    @BindingAdapter({"app:loadImage"})
+    public static void setImage(ImageView view, String img){
+        //img
+        Glide.with(view.getContext())
+                .load(img)
+                .into(view);
     }
 
 

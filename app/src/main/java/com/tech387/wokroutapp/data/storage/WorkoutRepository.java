@@ -24,6 +24,8 @@ public class WorkoutRepository {
         if (sInstance == null) {
             sInstance = new WorkoutRepository(workoutLocalDataSource);
         }
+
+
         return sInstance;
     }
 

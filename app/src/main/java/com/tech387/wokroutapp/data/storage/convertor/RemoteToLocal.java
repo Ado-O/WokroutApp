@@ -6,6 +6,7 @@ import com.tech387.wokroutapp.data.Exercise;
 import com.tech387.wokroutapp.data.ExerciseTag;
 import com.tech387.wokroutapp.data.Tag;
 import com.tech387.wokroutapp.data.Workout;
+import com.tech387.wokroutapp.data.WorkoutTag;
 import com.tech387.wokroutapp.data.storage.remote.response.ExerciseResponse;
 import com.tech387.wokroutapp.data.storage.remote.response.TagResponse;
 import com.tech387.wokroutapp.data.storage.remote.response.WorkoutResponse;
@@ -94,6 +95,22 @@ public class RemoteToLocal {
         }
 
         return exerciseTags;
+    }
+
+
+    /**
+     *
+     * @param workoutId -> get id from workout
+     * @param tags -> get all tags from workout
+     * @return
+     */
+    public static List<WorkoutTag> workoutTagsConverter(long workoutId, List<Integer> tags){
+        List<WorkoutTag> workoutTags = new ArrayList<>();
+
+        for (long tagId : tags){
+            workoutTags.add(new WorkoutTag(workoutId, tagId));
+        }
+        return workoutTags;
     }
 
 }

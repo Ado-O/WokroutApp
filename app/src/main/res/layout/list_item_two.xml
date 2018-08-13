@@ -33,12 +33,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorWhite"
+                    app:workoutTags="@{workout.tags}"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="5dp"
                     android:padding="5dp"/>
 
+                <!--
                 <TextView
                     android:id="@+id/tv_upTwo"
                     android:layout_width="wrap_content"
@@ -59,6 +61,7 @@
                     android:layout_marginRight="5dp"
                     android:padding="5dp"/>
 
+-->
             </LinearLayout>
 
             <TextView

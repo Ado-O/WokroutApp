@@ -9,6 +9,7 @@ import com.tech387.wokroutapp.data.Exercise;
 import com.tech387.wokroutapp.data.ExerciseTag;
 import com.tech387.wokroutapp.data.Tag;
 import com.tech387.wokroutapp.data.Workout;
+import com.tech387.wokroutapp.data.WorkoutTag;
 import com.tech387.wokroutapp.data.storage.local.Tag.TagDao;
 import com.tech387.wokroutapp.data.storage.local.exercise.ExerciseDao;
 import com.tech387.wokroutapp.data.storage.local.workout.WorkoutDao;
@@ -17,8 +18,9 @@ import com.tech387.wokroutapp.data.storage.local.workout.WorkoutDao;
         Exercise.class,
         Workout.class,
         Tag.class,
-        ExerciseTag.class
-}, version = 4, exportSchema = false)
+        ExerciseTag.class,
+        WorkoutTag.class
+}, version = 5, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
