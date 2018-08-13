@@ -3,11 +3,14 @@ package com.tech387.wokroutapp.main;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.tech387.wokroutapp.R;
+import com.tech387.wokroutapp.data.storage.remote.content.ContentRemoteDataSource;
+import com.tech387.wokroutapp.data.storage.remote.response.BaseResponse;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -27,7 +30,7 @@ public class Main2Activity extends AppCompatActivity {
         mToolbar = findViewById(R.id.second_tb);
         mImageView = (ImageView) findViewById(R.id.main_iv_second);
 
-
+        //add setup
         setupToolbar();
         setupImgData();
     }
@@ -62,7 +65,7 @@ public class Main2Activity extends AppCompatActivity {
 
 
         Glide.with(Main2Activity.this)
-                 .load(course)
+                .load(course)
                 .into(mImageView);
     }
 }

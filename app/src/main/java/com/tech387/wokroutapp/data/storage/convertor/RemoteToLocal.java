@@ -1,9 +1,13 @@
 package com.tech387.wokroutapp.data.storage.convertor;
 
+import android.util.Log;
+
 import com.tech387.wokroutapp.data.Exercise;
 import com.tech387.wokroutapp.data.ExerciseTag;
+import com.tech387.wokroutapp.data.Tag;
 import com.tech387.wokroutapp.data.Workout;
 import com.tech387.wokroutapp.data.storage.remote.response.ExerciseResponse;
+import com.tech387.wokroutapp.data.storage.remote.response.TagResponse;
 import com.tech387.wokroutapp.data.storage.remote.response.WorkoutResponse;
 
 import java.util.ArrayList;
@@ -15,22 +19,21 @@ public class RemoteToLocal {
 
     /**
      * we redict response from networking (exercise)
-     *
      * @param exerciseResponses -> object wich we get exercise
-     * @return
+     * @return -> new create list, which have all needed data
      */
     public static List<Exercise> exerciseConverter(List<ExerciseResponse> exerciseResponses) {
 
         List<Exercise> exercises = new ArrayList<>();
 
         for (ExerciseResponse e : exerciseResponses) {
+
             exercises.add(
                     new Exercise(
                             e.getId(),
                             e.getRawName(),
                             e.getName(),
                             e.getThumbnail(),
-                            e.getFormats().get(1).getSource(),
                             e.getMusclesInvolved()
                     )
             );
@@ -40,9 +43,8 @@ public class RemoteToLocal {
 
     /**
      * we redict response from networking (workout)
-     *
      * @param workoutResponses -> object wich we get workout
-     * @return
+     * @return -> new create list, which have all needed data
      */
     public static List<Workout> workoutConverter(List<WorkoutResponse> workoutResponses) {
         List<Workout> workouts = new ArrayList<>();
@@ -59,7 +61,32 @@ public class RemoteToLocal {
         return workouts;
     }
 
-    public static List<ExerciseTag> exerciseTagConverter(long exerciseId, List<Long> tags) {
+    /**
+     * we redict response from networking (tags)
+     * @param tagResponses -> object wich we get Tags
+     * @return -> new create list, which have all needed data
+     */
+    public static List<Tag> tagConverter(List<TagResponse> tagResponses){
+        List<Tag> tags = new ArrayList<>();
+
+        for (TagResponse t : tagResponses){
+            tags.add(
+                    new Tag(
+                            t.getId(),
+                            t.getName()
+                    )
+            );
+        }
+        return tags;
+    }
+
+    /**
+     * in this case we create table exercise_tag_table and send from exercise_table id and tag
+     * @param exerciseId -> get id from exercise
+     * @param tags ->get all tags from exercise
+     * @return -> new create list, which have all needed data
+     */
+    public static List<ExerciseTag> exerciseTagConverter(long exerciseId, List<Integer> tags) {
         List<ExerciseTag> exerciseTags = new ArrayList<>();
 
         for (long tagId : tags) {

@@ -2,6 +2,7 @@ package com.tech387.wokroutapp.data.storage;
 
 import android.util.Log;
 
+import com.tech387.wokroutapp.data.storage.local.Tag.TagLocalDataSource;
 import com.tech387.wokroutapp.data.storage.local.exercise.ExerciseLocalDataSource;
 import com.tech387.wokroutapp.data.storage.local.workout.WorkoutLocalDataSource;
 import com.tech387.wokroutapp.data.storage.remote.content.ContentRemoteDataSource;
@@ -19,29 +20,34 @@ public class ContentRepository {
     private final ContentRemoteDataSource mContentRemoteDataSource;
     private final ExerciseLocalDataSource mExerciseLocalDataSource;
     private final WorkoutLocalDataSource mWorkoutLocalDataSource;
+    private final TagLocalDataSource mTagLocalDataSource;
 
     public ContentRepository(
             AppExecutors appExecutors,
             ContentRemoteDataSource contentRemoteDataSource,
             ExerciseLocalDataSource exerciseLocalDataSource,
-            WorkoutLocalDataSource workoutLocalDataSource) {
+            WorkoutLocalDataSource workoutLocalDataSource,
+            TagLocalDataSource tagLocalDataSource) {
         mContentRemoteDataSource = contentRemoteDataSource;
         mExerciseLocalDataSource = exerciseLocalDataSource;
         mAppExecutors = appExecutors;
         mWorkoutLocalDataSource = workoutLocalDataSource;
+        mTagLocalDataSource = tagLocalDataSource;
     }
 
     public static ContentRepository getsInstance(
             AppExecutors appExecutors,
             ContentRemoteDataSource contentRemoteDataSource,
             ExerciseLocalDataSource exerciseLocalDataSource,
-            WorkoutLocalDataSource workoutLocalDataSource) {
+            WorkoutLocalDataSource workoutLocalDataSource,
+            TagLocalDataSource tagLocalDataSource) {
         if (sInstance == null)
             sInstance = new ContentRepository(
                     appExecutors,
                     contentRemoteDataSource,
                     exerciseLocalDataSource,
-                    workoutLocalDataSource);
+                    workoutLocalDataSource,
+                    tagLocalDataSource);
 
         return sInstance;
     }
@@ -54,14 +60,16 @@ public class ContentRepository {
                 mAppExecutors.diskIO().execute(new Runnable() {
                     @Override
                     public void run() {
+
                         mExerciseLocalDataSource.insertExercise
                                 (content.getResponseResponse().getExercise());
 
                         mWorkoutLocalDataSource.insertWorkouts
                                 (content.getResponseResponse().getWorkouts());
 
-
-
+                        mTagLocalDataSource.insertTag(
+                                content.getResponseResponse().getmTag()
+                        );
 
                         Log.e(TAG, "OnSuccess");
 

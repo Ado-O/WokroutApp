@@ -12,32 +12,30 @@ public class Exercise {
 
     @ColumnInfo(name = "_id")
     @PrimaryKey
-    private final long mId;
+    private long mId;
 
     @ColumnInfo(name = "raw_name")
-    private final String mRawName;
+    private String mRawName;
 
     @ColumnInfo(name = "title")
-    private final String mTitle;
+    private String mTitle;
 
     @ColumnInfo(name = "image")
-    private final String mImage;
-
-    @ColumnInfo(name = "video")
-    private final String mVideo;
+    private String mImage;
 
     @ColumnInfo(name = "muscles_involved")
-    private final String mMuscle;
+    private String mMuscle;
 
+    //Tell the room to ignore List
+    //in it we safe the date that GET from the exercise
     @Ignore
     private List<Tag> mTags;
 
-    public Exercise(long id, String rawName, String title, String image, String video, String muscle) {
+    public Exercise(long id, String rawName, String title, String image, String muscle) {
         mId = id;
         mRawName = rawName;
         mTitle = title;
         mImage = image;
-        mVideo = video;
         mMuscle = muscle;
     }
 
@@ -49,18 +47,9 @@ public class Exercise {
         return mRawName;
     }
 
-
     public String getTitle() {
         return mTitle;
     }
-
-
-
-
-    public String getVideo() {
-        return mVideo;
-    }
-
 
     public String getMuscle() {
         return mMuscle;
@@ -73,7 +62,6 @@ public class Exercise {
     public void setTags(List<Tag> tags) {
         mTags = tags;
     }
-
 
     public String getImage() {
         return mImage;

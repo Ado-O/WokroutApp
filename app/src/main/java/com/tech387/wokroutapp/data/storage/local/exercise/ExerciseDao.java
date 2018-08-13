@@ -48,6 +48,4 @@ public interface ExerciseDao {
     //  call clearTags before insertExerciseTags
     @Query("DELETE FROM exercise_tag_table WHERE exercise_id=:exerciseId")
     void clearTags(long exerciseId);
-
-
 }

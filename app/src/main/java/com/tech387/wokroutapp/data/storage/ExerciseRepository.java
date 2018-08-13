@@ -25,8 +25,12 @@ public class ExerciseRepository {
         }
         return sInstance;
     }
-
-
+    /**
+     * his class receives the all data that is
+     * derived from the db exercise_table and goes further into the UI
+     * @param callback -> it serves to recognize if onSuccess() sends the received data
+     *                 or sends it onError()
+     */
     public void getExercises(final GetExerciseCallback callback) {
         mExerciseLocalDataSource.getExercises(new ExerciseLocalDataSource.GetExerciseCallback() {
             @Override

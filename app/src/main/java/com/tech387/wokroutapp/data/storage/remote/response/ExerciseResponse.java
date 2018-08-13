@@ -28,10 +28,6 @@ public class ExerciseResponse implements Serializable{
     @Expose
     private String thumbnail;
 
-    @SerializedName("formats")
-    @Expose
-    private List<FormatResponse> formats = null;
-
     @SerializedName("muscles_involved")
     @Expose
     private String musclesInvolved;
@@ -40,9 +36,10 @@ public class ExerciseResponse implements Serializable{
     @Expose
     private String version;
 
+    //add in list all tag which are located
     @SerializedName("tags")
     @Expose
-    private List<Long> tags = null;
+    private List<Integer> tags = null;
 
     public long getId() {
         return id;
@@ -84,14 +81,6 @@ public class ExerciseResponse implements Serializable{
         this.thumbnail = thumbnail;
     }
 
-    public List<FormatResponse> getFormats() {
-        return formats;
-    }
-
-    public void setFormats(List<FormatResponse> formats) {
-        this.formats = formats;
-    }
-
     public String getMusclesInvolved() {
         return musclesInvolved;
     }
@@ -108,11 +97,11 @@ public class ExerciseResponse implements Serializable{
         this.version = version;
     }
 
-    public List<Long> getTags() {
+    public List<Integer> getTags() {
         return tags;
     }
 
-    public void setTags(List<Long> tags) {
+    public void setTags(List<Integer> tags) {
         this.tags = tags;
     }
 

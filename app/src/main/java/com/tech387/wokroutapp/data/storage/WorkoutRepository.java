@@ -27,6 +27,12 @@ public class WorkoutRepository {
         return sInstance;
     }
 
+    /**
+     * his class receives the all data that is
+     * derived from the db workout_table and goes further into the UI
+     * @param callback -> it serves to recognize if onSuccess() sends the received data
+     *                 or sends it onError()
+     */
     public void getWorkout(final GetWorkoutsCallback callback) {
         mWoekoutLocalDataSource.getWorkouts(new WorkoutLocalDataSource.GetWorkoutsCallback() {
             @Override

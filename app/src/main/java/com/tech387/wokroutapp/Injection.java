@@ -6,6 +6,7 @@ import com.tech387.wokroutapp.data.storage.ContentRepository;
 import com.tech387.wokroutapp.data.storage.ExerciseRepository;
 import com.tech387.wokroutapp.data.storage.WorkoutRepository;
 import com.tech387.wokroutapp.data.storage.local.AppDatabase;
+import com.tech387.wokroutapp.data.storage.local.Tag.TagLocalDataSource;
 import com.tech387.wokroutapp.data.storage.local.exercise.ExerciseLocalDataSource;
 import com.tech387.wokroutapp.data.storage.local.workout.WorkoutLocalDataSource;
 import com.tech387.wokroutapp.data.storage.remote.content.ContentRemoteDataSource;
@@ -38,12 +39,20 @@ public class Injection {
                 provideAppExecutors()
         );
     }
+
+    public static TagLocalDataSource provideTagLocalDataSOurce(Context context){
+        return TagLocalDataSource.getInstance(
+                provideAppDatabase(context.getApplicationContext()).getTagDao(),
+                provideAppExecutors()
+        );
+    }
     public static ContentRepository provideContentRepository(Context context) {
         return ContentRepository.getsInstance(
                 provideAppExecutors(),
                 provideContentRemoteDataSource(),
                 provideExerciseLocalDataSource(context.getApplicationContext()),
-                provideWorkoutLocalDataSource(context.getApplicationContext())
+                provideWorkoutLocalDataSource(context.getApplicationContext()),
+                provideTagLocalDataSOurce(context.getApplicationContext())
         );
     }
 
