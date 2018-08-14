@@ -18,17 +18,22 @@ public class WorkoutTag {
     @ColumnInfo(name = "tag_id")
     private long mTagId;
 
-    public WorkoutTag(Integer id, long workoutId, long tagId) {
+    @ColumnInfo(name = "type")
+    private String mType;
+
+    public WorkoutTag(Integer id, long workoutId, long tagId, String type) {
         mId = id;
         mWorkoutId = workoutId;
         mTagId = tagId;
+        mType = type;
     }
 
     @Ignore
-    public WorkoutTag(long workoutId, long tagId) {
+    public WorkoutTag(long workoutId, long tagId, String type) {
         mId = null;
         mWorkoutId = workoutId;
         mTagId = tagId;
+        mType = type;
     }
 
     public Integer getId() {
@@ -53,5 +58,14 @@ public class WorkoutTag {
 
     public void setTagId(long mTagId) {
         this.mTagId = mTagId;
+    }
+
+
+    public String getType() {
+        return mType;
+    }
+
+    public void setType(String mType) {
+        this.mType = mType;
     }
 }

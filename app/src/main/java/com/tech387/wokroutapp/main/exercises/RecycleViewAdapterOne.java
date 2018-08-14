@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.tech387.wokroutapp.data.Exercise;
-import com.tech387.wokroutapp.databinding.ListItemBinding;
+import com.tech387.wokroutapp.databinding.ExerciseListBinding;
 import com.tech387.wokroutapp.util.RecyclerViewClickListener;
 
 import java.util.List;
@@ -32,7 +32,7 @@ public class RecycleViewAdapterOne extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ExerciseViewHolder(ListItemBinding.inflate(mInflater, parent, false), mListener);
+        return new ExerciseViewHolder(ExerciseListBinding.inflate(mInflater, parent, false), mListener);
     }
 
     @Override

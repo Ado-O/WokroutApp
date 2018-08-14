@@ -69,7 +69,8 @@ public class RemoteToLocal {
             workouts.add(
                     new Workout(w.getId(),
                             w.getName(),
-                            w.getDescription()
+                            w.getDescription(),
+                            w.getDuration()
                     )
             );
         }
@@ -121,12 +122,15 @@ public class RemoteToLocal {
      * @param tags      -> get all tags from workout
      * @return
      */
-    public static List<WorkoutTag> workoutTagsConverter(long workoutId, List<Integer> tags) {
+    public static List<WorkoutTag> workoutTagsConverter(long workoutId, List<Integer> tags, List<String> type) {
         List<WorkoutTag> workoutTags = new ArrayList<>();
 
        // Log.e(TAG, String.valueOf(tags));
         for (long tagId : tags) {
-            workoutTags.add(new WorkoutTag(workoutId, tagId));
+            for (String typeId : type) {
+                workoutTags.add(new WorkoutTag(workoutId, tagId, typeId));
+                break;
+            }
         }
 
         return workoutTags;

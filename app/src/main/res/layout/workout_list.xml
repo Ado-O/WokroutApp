@@ -67,6 +67,17 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="5dp"/>
 
+            <TextView
+                android:id="@+id/tv_downThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_inside"
+                app:duration="@{workout.duration}"
+                android:textSize="@dimen/textSmall"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"/>
+
         </android.support.constraint.ConstraintLayout>
     </android.support.design.card.MaterialCardView>
 </layout>

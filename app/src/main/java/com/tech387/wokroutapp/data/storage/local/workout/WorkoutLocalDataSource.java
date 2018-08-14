@@ -1,8 +1,5 @@
 package com.tech387.wokroutapp.data.storage.local.workout;
 
-import android.nfc.Tag;
-import android.util.Log;
-
 import com.tech387.wokroutapp.data.Workout;
 import com.tech387.wokroutapp.data.storage.convertor.RemoteToLocal;
 import com.tech387.wokroutapp.data.storage.remote.response.WorkoutResponse;
@@ -42,15 +39,19 @@ public class WorkoutLocalDataSource {
        for (WorkoutResponse w : workoutResponses){
 
            List<Integer> workoutTagId = new ArrayList<>();
+           List<String> typeId = new ArrayList<>();
 
            for (WorkoutTagResponse f : w.getTags()) {
                workoutTagId.add(f.getId());
+               typeId.add(f.getType());
            }
 
            mWorkoutDao.clearTags(w.getId());
            mWorkoutDao.insertWorkoutTags(RemoteToLocal.workoutTagsConverter(
                    w.getId(),
-                   workoutTagId
+                   workoutTagId,
+                   typeId
+
            ));
 
        }

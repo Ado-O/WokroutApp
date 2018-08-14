@@ -4,19 +4,16 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
 import com.tech387.wokroutapp.R;
-import com.tech387.wokroutapp.data.storage.remote.content.ContentRemoteDataSource;
-import com.tech387.wokroutapp.data.storage.remote.response.BaseResponse;
 
-public class Main2Activity extends AppCompatActivity {
+public class VideoActivity extends AppCompatActivity {
 
-    private static final String TAG = Main2Activity.class.getSimpleName();
+    private static final String TAG = VideoActivity.class.getSimpleName();
 
     private Toolbar mToolbar;
     public String course;
@@ -28,7 +25,7 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_atv2);
+        setContentView(R.layout.video_atv);
 
         //find view
 
@@ -84,7 +81,7 @@ public class Main2Activity extends AppCompatActivity {
         course = getIntent().getExtras().getString("course");
 
 
-        Glide.with(Main2Activity.this)
+        Glide.with(VideoActivity.this)
                 .load(course)
                 .into(mImageView);
     }

@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ import com.tech387.wokroutapp.R;
 import com.tech387.wokroutapp.data.Exercise;
 import com.tech387.wokroutapp.data.storage.ContentRepository;
 import com.tech387.wokroutapp.data.storage.ExerciseRepository;
-import com.tech387.wokroutapp.main.Main2Activity;
+import com.tech387.wokroutapp.main.VideoActivity;
 import com.tech387.wokroutapp.util.RecyclerViewClickListener;
 
 import java.util.List;
@@ -40,7 +39,7 @@ public class ExerciseFragment extends Fragment implements RecyclerViewClickListe
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.main_one_frag, container, false);
+        View view = inflater.inflate(R.layout.exercise_frag, container, false);
 
         mContext = getActivity();
 
@@ -77,7 +76,7 @@ public class ExerciseFragment extends Fragment implements RecyclerViewClickListe
 
     @Override
     public void recyclerViewListClicked(View v, Exercise exercise) {
-        Intent intent = new Intent(mContext, Main2Activity.class);
+        Intent intent = new Intent(mContext, VideoActivity.class);
         intent.putExtra("course", exercise.getMuscle());
         intent.putExtra("courseTitle", exercise.getTitle());
         intent.putExtra("courseVideo", exercise.getVideo());

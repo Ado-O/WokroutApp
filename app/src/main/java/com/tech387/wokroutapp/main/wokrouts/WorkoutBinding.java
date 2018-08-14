@@ -1,10 +1,13 @@
 package com.tech387.wokroutapp.main.wokrouts;
 
+import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.tech387.wokroutapp.data.Tag;
+import com.tech387.wokroutapp.data.Workout;
+import com.tech387.wokroutapp.data.WorkoutTag;
 import com.tech387.wokroutapp.data.storage.remote.response.WorkoutTagResponse;
 
 import java.util.ArrayList;
@@ -14,23 +17,33 @@ public class WorkoutBinding {
 
     private static final String TAG = WorkoutBinding.class.getSimpleName();
 
-
     @SuppressWarnings("unchecked")
     @BindingAdapter({"app:workoutTags"})
     public static void setText(TextView textView, List<Tag> tags) {
         //img
         String finalTags = "";
 
+         //   Log.e(TAG, String.valueOf(workoutTags.get(1).getType()));
+
         for (int i = 0; i < tags.size(); i++) {
 
                 finalTags += tags.get(i).getName();
 
-                if (i < tags.size() - 1) {
-                    finalTags += ", ";
-                }
         }
 
         textView.setText(finalTags);
+    }
+
+
+    @SuppressWarnings("unchecked")
+    @BindingAdapter({"app:duration"})
+    public static void setNumber(TextView textView, Long number) {
+
+        int minutes = (int) ((number / (1000*60)) % 60);
+
+        String addMinut = minutes + " min";
+
+        textView.setText(String.valueOf(addMinut));
     }
 
 }

@@ -20,13 +20,17 @@ public class Workout {
     @ColumnInfo(name = "description")
     private String mDescription;
 
+    @ColumnInfo(name = "duration")
+    private long mDuration;
+
     @Ignore
     private List<Tag> mTags;
 
-    public Workout(long id, String name, String description) {
+    public Workout(long id, String name, String description, long duration) {
         mId = id;
         mName = name;
         mDescription = description;
+        mDuration = duration;
     }
 
     public long getId() {
@@ -57,5 +61,13 @@ public class Workout {
 
     public void setTags(List<Tag> tags) {
         mTags = tags;
+    }
+
+    public long getDuration() {
+        return mDuration;
+    }
+
+    public void setDuration(long mDuration) {
+        this.mDuration = mDuration;
     }
 }
