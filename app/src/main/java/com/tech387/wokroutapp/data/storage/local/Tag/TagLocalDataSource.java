@@ -31,7 +31,7 @@ public class TagLocalDataSource {
         );
     }
 
-    public void getTags(final GetWorkoutsCallback callback) {
+    public void getTags(final GetTagCallback callback) {
         mAppExecutors.diskIO().execute(
                 new Runnable() {
                     @Override
@@ -49,7 +49,7 @@ public class TagLocalDataSource {
                 });
     }
 
-    public interface GetWorkoutsCallback {
+    public interface GetTagCallback {
         void onSuccess(List<Tag> tags);
 
         void onError();

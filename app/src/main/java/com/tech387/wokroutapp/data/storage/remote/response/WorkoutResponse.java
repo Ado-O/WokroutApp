@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class WorkoutResponse implements Serializable{
 
@@ -22,6 +23,10 @@ public class WorkoutResponse implements Serializable{
     @SerializedName("duration")
     @Expose
     private long mDuration;
+
+    @SerializedName("tags")
+    @Expose
+    private List<WorkoutTagResponse> tags = null;
 
     public long getId() {
         return mId;
@@ -55,4 +60,11 @@ public class WorkoutResponse implements Serializable{
         mDuration = duration;
     }
 
+    public List<WorkoutTagResponse> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<WorkoutTagResponse> tags) {
+        this.tags = tags;
+    }
 }

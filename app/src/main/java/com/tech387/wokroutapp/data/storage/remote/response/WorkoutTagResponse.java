@@ -5,25 +5,26 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class FormatResponse implements Serializable {
+public class WorkoutTagResponse implements Serializable{
 
-    @SerializedName("id")
+    @SerializedName("u_id")
     @Expose
-    private long id;
+    private Integer id;
 
     @SerializedName("type")
     @Expose
     private String type;
 
-    @SerializedName("source")
-    @Expose
-    private String source;
+    public WorkoutTagResponse(Integer id, String type) {
+        this.id = id;
+        this.type = type;
+    }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -33,13 +34,5 @@ public class FormatResponse implements Serializable {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
     }
 }

@@ -9,30 +9,43 @@ public class TagResponse implements Serializable{
 
     @SerializedName("id")
     @Expose
-    private long id;
+    private long mId;
 
     @SerializedName("name")
     @Expose
-    private String name;
+    private String mName;
 
-    public TagResponse(long id, String name) {
-        this.id = id;
-        this.name = name;
+    @SerializedName("workout_type")
+    @Expose
+    private String mWorkoutType;
+
+    public TagResponse(long id, String name, String workoutType) {
+        this.mId = id;
+        this.mName = name;
+        this.mWorkoutType = workoutType;
     }
 
     public long getId() {
-        return id;
+        return mId;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.mId = id;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
+    }
+
+    public String getWorkoutType() {
+        return mWorkoutType;
+    }
+
+    public void setWorkoutType(String mWorkoutType) {
+        this.mWorkoutType = mWorkoutType;
     }
 }
