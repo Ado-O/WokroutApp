@@ -14,13 +14,9 @@ public class Tag {
     @ColumnInfo(name = "name")
     private String mName;
 
-    @ColumnInfo(name = "workout_type")
-    private String mWorkoutType;
-
-    public Tag(long id, String name, String workoutType) {
+    public Tag(long id, String name) {
         mId = id;
         mName = name;
-        mWorkoutType = workoutType;
     }
 
     public long getId() {
@@ -39,11 +35,5 @@ public class Tag {
         mName = name;
     }
 
-    public String getWorkoutType() {
-        return mWorkoutType;
     }
 
-    public void setWorkoutType(String mWorkoutType) {
-        this.mWorkoutType = mWorkoutType;
-    }
-}

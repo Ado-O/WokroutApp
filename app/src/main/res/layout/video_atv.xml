@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="video"
+            type="com.tech387.wokroutapp.data.Video" />
+    </data>
+
+
+<android.support.design.widget.CoordinatorLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.VideoActivity">
+    tools:context=".main.video.VideoActivity">
 
 
     <android.support.constraint.ConstraintLayout
@@ -33,6 +42,7 @@
             android:id="@+id/main_vv_second"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:video="@{video.video}"
             app:layout_constraintDimensionRatio="1:0.8"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -42,6 +52,7 @@
             android:id="@+id/main_iv_second"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:loadImage="@{video.img}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -49,3 +60,4 @@
     </android.support.constraint.ConstraintLayout>
 
 </android.support.design.widget.CoordinatorLayout>
+    </layout>

@@ -15,14 +15,9 @@ public class TagResponse implements Serializable{
     @Expose
     private String mName;
 
-    @SerializedName("workout_type")
-    @Expose
-    private String mWorkoutType;
-
-    public TagResponse(long id, String name, String workoutType) {
+    public TagResponse(long id, String name) {
         this.mId = id;
         this.mName = name;
-        this.mWorkoutType = workoutType;
     }
 
     public long getId() {
@@ -41,11 +36,4 @@ public class TagResponse implements Serializable{
         this.mName = name;
     }
 
-    public String getWorkoutType() {
-        return mWorkoutType;
-    }
-
-    public void setWorkoutType(String mWorkoutType) {
-        this.mWorkoutType = mWorkoutType;
-    }
 }

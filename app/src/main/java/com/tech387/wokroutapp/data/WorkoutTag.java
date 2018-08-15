@@ -60,7 +60,6 @@ public class WorkoutTag {
         this.mTagId = mTagId;
     }
 
-
     public String getType() {
         return mType;
     }

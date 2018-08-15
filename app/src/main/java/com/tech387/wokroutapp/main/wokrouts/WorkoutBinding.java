@@ -20,18 +20,14 @@ public class WorkoutBinding {
     @SuppressWarnings("unchecked")
     @BindingAdapter({"app:workoutTags"})
     public static void setText(TextView textView, List<Tag> tags) {
-        //img
-        String finalTags = "";
 
-         //   Log.e(TAG, String.valueOf(workoutTags.get(1).getType()));
+        String text = "";
 
         for (int i = 0; i < tags.size(); i++) {
-
-                finalTags += tags.get(i).getName();
-
+            text = tags.get(i).getName();
         }
 
-        textView.setText(finalTags);
+        textView.setText(text);
     }
 
 

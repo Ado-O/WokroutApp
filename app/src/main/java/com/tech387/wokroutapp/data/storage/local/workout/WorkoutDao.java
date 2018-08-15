@@ -22,9 +22,13 @@ public interface WorkoutDao {
     @Query("SELECT * FROM workout_table")
     List<Workout> getWorkouts();
 
+    @Query("SELECT * FROM workout_tag_table")
+    List<WorkoutTag> getWorkoutsTag();
+
     @Query("SELECT tag_table.* FROM tag_table INNER JOIN workout_tag_table ON " +
-            "tag_table._id= workout_tag_table.tag_id WHERE workout_tag_table.workout_id = :workoutId")
-    List<Tag> getWorkoutTags(long workoutId);
+            "tag_table._id= workout_tag_table.tag_id WHERE workout_tag_table.workout_id = :workoutId " +
+            "AND workout_tag_table.type =:type")
+    List<Tag> getWorkoutTags(long workoutId, String type);
 
     @Insert
     void insertWorkoutTags(List<WorkoutTag> workoutTags);

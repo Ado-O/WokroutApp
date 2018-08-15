@@ -91,8 +91,7 @@ public class RemoteToLocal {
             tags.add(
                     new Tag(
                             t.getId(),
-                            t.getName(),
-                            t.getWorkoutType()
+                            t.getName()
                     )
             );
         }

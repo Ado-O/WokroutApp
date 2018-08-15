@@ -1,6 +1,9 @@
 package com.tech387.wokroutapp.data.storage.local.workout;
 
+import android.util.Log;
+
 import com.tech387.wokroutapp.data.Workout;
+import com.tech387.wokroutapp.data.WorkoutTag;
 import com.tech387.wokroutapp.data.storage.convertor.RemoteToLocal;
 import com.tech387.wokroutapp.data.storage.remote.response.WorkoutResponse;
 import com.tech387.wokroutapp.data.storage.remote.response.WorkoutTagResponse;
@@ -51,7 +54,6 @@ public class WorkoutLocalDataSource {
                    w.getId(),
                    workoutTagId,
                    typeId
-
            ));
 
        }
@@ -64,11 +66,23 @@ public class WorkoutLocalDataSource {
                     @Override
                     public void run() {
                         final List<Workout> workouts = mWorkoutDao.getWorkouts();
-
+                       // List<WorkoutTag> workoutTags = mWorkoutDao.getWorkoutsTag();
 
                         for (Workout w : workouts) {
-                            w.setTags(mWorkoutDao.getWorkoutTags(w.getId()));
+//                            for(WorkoutTag t : workoutTags){
+//                            w.setTags(mWorkoutDao.getWorkoutTags(
+//                                    w.getId(),
+//                                    t.getType()
+//                            ));
+//                                    break;
+//                            }
+
+                            w.setTags(mWorkoutDao.getWorkoutTags(
+                                    w.getId(),
+                                    "E"
+                            ));
                         }
+
 
                             mAppExecutors.mainThread().execute(
                                     new Runnable() {

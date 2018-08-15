@@ -17,7 +17,7 @@ import com.tech387.wokroutapp.R;
 import com.tech387.wokroutapp.data.Exercise;
 import com.tech387.wokroutapp.data.storage.ContentRepository;
 import com.tech387.wokroutapp.data.storage.ExerciseRepository;
-import com.tech387.wokroutapp.main.VideoActivity;
+import com.tech387.wokroutapp.main.video.VideoActivity;
 import com.tech387.wokroutapp.util.RecyclerViewClickListener;
 
 import java.util.List;
